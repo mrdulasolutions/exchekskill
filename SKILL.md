@@ -15,7 +15,7 @@ Invoke this skill when the user asks to classify an item for export, determine E
 ## Prerequisites
 
 1. **Authenticate wallet** — Ensure the user's wallet is initialized and signed in (e.g. `npx awal@2.0.3 status`). If not, use the authenticate-wallet skill.
-2. **Fund with USDC** — The wallet must have USDC on Base for paid endpoints. First classification is free via `POST /api/classify/start-free` with `walletAddress`. For subsequent classifications, fund via Base, Coinbase, or Pay Sponge; see the fund skill if needed.
+2. **Fund with USDC** — The wallet must have USDC on Base for paid endpoints. First classification is free via `POST /api/classify/start-free` with `walletAddress`. For subsequent classifications, fund via Base, Coinbase, or Pay Sponge; see the fund skill if needed. The API accepts payments from **Pay Sponge, Coinbase, or Base wallet** (and other x402-compatible gateways on Base).
 
 ## Classification prompts (agent-driven flow)
 

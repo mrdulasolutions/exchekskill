@@ -19,7 +19,7 @@ Restart Claude Code (or run `claude skills list`) so the skill is picked up. The
 ## How to use
 
 - **Invoke the skill** — Type `/exchek-classify` or ask in plain language, e.g. *“Classify this item for export”* or *“What’s the ECCN for [product description]?”*  
-- **What Claude does** — Uses your wallet (you’ll be prompted to authenticate or fund with USDC on Base if needed), starts a classification (first free per wallet, then paid), asks for item description/specs/intended use, runs jurisdiction and Order of Review via the API, and walks you through confirmations or refinements until you approve.  
+- **What Claude does** — Uses your wallet (you’ll be prompted to authenticate or fund with USDC on Base if needed), starts a classification (first free per wallet, then paid), asks for item description/specs/intended use, runs jurisdiction and Order of Review via the API, and walks you through confirmations or refinements until you approve. Payments are accepted via **Pay Sponge, Coinbase, or Base wallet**.  
 - **What you get** — A final ECCN (or jurisdiction outcome), rationale, citations, and when Supabase is configured a **report URL** for the audit-ready classification memo. Claude returns that URL or a success message so you can save or share the report.
 
 You can say things like: *“I need to classify a pressure sensor for export”*, *“Run an ExChek classification for this spec sheet”*, or *“What’s the BIS/ITAR status for [item]?”* — Claude will load the skill and run the AITL flow.
