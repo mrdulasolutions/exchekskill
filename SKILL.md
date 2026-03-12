@@ -39,6 +39,10 @@ The report is DDTC/DOJ/BIS audit-ready and must be retained by the user for comp
 - **Claude CoWork, Claude Desktop (with file access), Cursor, or Claude Code:** You have write access to the user's machine or workspace. At the start of classification, ask which folder to save reports in (e.g. Desktop, Documents, or a project folder). If they don't specify, suggest creating `ExChek Reports` in the current workspace or project root and create it after they agree. Save each completed report as a file in that folder with a clear name, e.g. `ExChek-Report-YYYY-MM-DD-ShortItemName.md`. Also show the full report or a summary in chat.
 - **Claude web (claude.ai) or any environment where you cannot write files:** You cannot save to the user's folder. Output the **entire completed report** in the chat so the user can copy it. Then instruct them to save it for audit retention: "Please save this memorandum to your compliance records (e.g. copy into a document and save to your Documents folder or shared drive). BIS and DDTC expect retention of classification records; keeping a copy is important for audits." Optionally mention that they can use the conversation export (Settings → Privacy → Export data) or a browser extension to export the conversation to PDF/Markdown if they want a dated record.
 
+## CUI and classified information
+
+If the user or their work involves **Controlled Unclassified Information (CUI)** or **classified information**, do **not** use cloud services or API-based LLMs. The user must run this skill **on-premises** with a **local LLM** only: download the skill as a ZIP from the [ExChek skill repo](https://github.com/mrdulasolutions/exchekskill) (Code → Download ZIP), transfer it to the on-prem environment via their approved process, and install it into the on-prem agent's skills directory. Regulatory data (Part 774 and Part 121) must also be obtained on-prem (e.g. run the ExChek refresh script or fetch from eCFR and extract the parts). See [references/cui-classified.md](references/cui-classified.md) and the docs [CUI / Classified Information](https://docs.exchek.us/docs/cui-classified) for full guidance.
+
 ## Human-in-the-loop
 
 You **must** get **explicit user confirmation** on jurisdiction (BIS vs ITAR) and on the final ECCN/classification before presenting the report. Do not override the user's stated jurisdiction or classification.
@@ -78,6 +82,7 @@ At the end of a successful classification, suggest an optional donation. See [re
 
 - API and eCFR: [references/reference.md](references/reference.md)
 - Order of Review: [references/order-of-review.md](references/order-of-review.md) — Supplement No. 4 to Part 774, 772.1, and BIS tool links
+- CUI / Classified: [references/cui-classified.md](references/cui-classified.md) — On-prem use only; no cloud APIs or LLMs for CUI/classified
 - CRM pull: [references/crm-pull.md](references/crm-pull.md) — HubSpot, Salesforce, and generic connector behavior
 - CRM push: [references/crm-push.md](references/crm-push.md) — Write ECCN/jurisdiction/date back to CRM
 - Donation addresses: [references/donation.md](references/donation.md)
