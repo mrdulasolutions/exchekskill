@@ -1,6 +1,6 @@
 # ExChek Skills
 
-Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **two skills** in separate folders. Install one or both into your agent’s skills directory.
+Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **three skills** in separate folders. Install one or more into your agent’s skills directory.
 
 - **API**: https://api.exchek.us  
 - **Docs**: https://docs.exchek.us  
@@ -14,6 +14,7 @@ Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others).
 |--------|--------|-------------|
 | **exchek-classify/** | ECCN Classification | Classify items for U.S. export control (15 CFR Part 774, 22 CFR Part 121). Human-in-the-loop; audit-ready report from a template. Free; optional donation. |
 | **exchek-csl/** | Consolidated Screening List search | Search the Trade.gov Consolidated Screening List (CSL) via API. Requires a free API key from [developer.trade.gov](https://developer.trade.gov). Supports fuzzy search and all API parameters. |
+| **exchek-license/** | License determination | Determine EAR license requirements and exceptions (Part 738 Country Chart, Part 740) for a given item, ECCN, destination, and end use. Produces a short audit-ready license determination memo. Free; optional donation. |
 
 ---
 
@@ -50,6 +51,17 @@ cp -r exchekskills/exchek-csl ~/.claude/skills/exchek-csl
 
 Provide your Trade.gov API key when the agent asks, or set `TRADE_GOV_API_KEY` in your environment. Skill name: **exchek-csl**.
 
+### License determination skill (exchek-license)
+
+No API key required; uses https://api.exchek.us for Part 774, 738, 740 (with eCFR fallback).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-license ~/.claude/skills/exchek-license
+```
+
+Skill name: **exchek-license**.
+
 ---
 
 ## How to use
@@ -74,6 +86,7 @@ See each skill’s **README.md** and **SKILL.md** inside its folder for full ins
    ```bash
    cp -r exchekskills/exchek-classify ~/.claude/skills/exchek-classify
    cp -r exchekskills/exchek-csl ~/.claude/skills/exchek-csl
+   cp -r exchekskills/exchek-license ~/.claude/skills/exchek-license
    ```
    (Adjust paths if the user’s clone or skills directory is different.)
 4. **Restart or reload** — Restart the agent or run its “reload skills” command (e.g. `claude skills list`) so it uses the updated skill files.

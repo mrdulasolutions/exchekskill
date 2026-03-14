@@ -6,7 +6,8 @@
 
 ## Document header
 
-**PRIVILEGED AND CONFIDENTIAL — EXPORT COMPLIANCE — DENIED PARTY SCREENING RECORD**
+**PRIVILEGED AND CONFIDENTIAL — EXPORT COMPLIANCE — DENIED PARTY SCREENING RECORD.** This document is privileged and confidential whether or not it was prepared by an attorney.  
+*[Include this line if prepared with or at the direction of legal counsel: Prepared with or at the direction of legal counsel.]*
 
 | Field | Value |
 |-------|--------|
@@ -106,7 +107,7 @@
 
 ## Section 6 — AI / tool disclosure
 
-*Complete when AI or automated screening tools were used (e.g. CSL API, Descartes, BITE Data, Lenzo).*
+*Complete when AI or automated screening tools were used (e.g. ExChek CSL, CSL API, or other automated screening tools).*
 
 | Field | Details |
 |-------|---------|

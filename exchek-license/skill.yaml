@@ -1,0 +1,13 @@
+# ExChek License Determination Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-license
+description: Determine EAR license requirements and exceptions (Part 738 Country Chart, Part 740) for a given item, ECCN, destination, and end use. Use when the user asks whether a license is needed, which license exception applies, or wants a license determination memo. Produces a short audit-ready memo.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md
