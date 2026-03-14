@@ -6,8 +6,8 @@
 
 ## Document header
 
-**PRIVILEGED AND CONFIDENTIAL — ATTORNEY-CLIENT COMMUNICATION / ATTORNEY WORK PRODUCT**  
-*[Include this line if prepared with or at the direction of legal counsel]*
+**PRIVILEGED AND CONFIDENTIAL.** This document is privileged and confidential whether or not it was prepared by an attorney.  
+*[Include this line if prepared with or at the direction of legal counsel: Prepared with or at the direction of legal counsel.]*
 
 | Field | Value |
 |-------|--------|
