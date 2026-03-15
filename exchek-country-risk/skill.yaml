@@ -1,0 +1,13 @@
+# ExChek Country / Destination Risk One-Pager Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-country-risk
+description: For a given country, produce a one-page summary of embargo/sanctions, Entity List/MEU density, typical license expectations, and high-level red flags for deal or territory review. Use when the user wants a country risk one-pager, "can we go there?" answer, or destination risk summary for sales/CRM/due diligence.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

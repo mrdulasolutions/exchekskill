@@ -1,0 +1,13 @@
+# ExChek ITAR vs. EAR Jurisdiction Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-jurisdiction
+description: Determine whether an item is ITAR or EAR via a guided questionnaire (USML, specially designed, etc.) and produce a short jurisdiction memo with recommended next steps (DDTC vs. BIS classification). Use when the user wants to know "is it ITAR or EAR?", run a jurisdiction check, or get a jurisdiction memo before classifying.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

@@ -1,0 +1,13 @@
+# ExChek Recordkeeping / Retention Checklist Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-recordkeeping
+description: Produce a retention schedule or checklist under 15 CFR 762 (and ITAR 22 CFR Part 122 where applicable) tailored to company activities (classification, licenses, screening, shipments). Use when the user wants a recordkeeping/retention policy, retention schedule, or checklist for export compliance.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

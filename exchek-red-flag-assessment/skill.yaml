@@ -1,0 +1,13 @@
+# ExChek End-use / End-user Red Flag Assessment Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-red-flag-assessment
+description: Run BIS "Know Your Customer" red-flag checklist (Supp. 3 to Part 732) for a party/transaction. Produces an auditable red-flag assessment note (no/yes/conditional; escalate if needed). Use when the user wants an end-use/end-user red-flag assessment, Know Your Customer checklist, or dedicated red-flag review before committing.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

@@ -1,0 +1,13 @@
+# ExChek Encryption (ENC / 5x992) Classification & Notification Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-encryption
+description: Help with 5A992/5D992 (and related) encryption classification, License Exception ENC/TSR, mass market and TSU, and when BIS/NSA notification or annual self-classification report is needed. Prep only; no filing. Use when the user wants to classify encryption items, understand ENC, or determine notification/report obligations.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

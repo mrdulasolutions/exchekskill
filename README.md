@@ -1,6 +1,6 @@
 # ExChek Skills
 
-Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **seven skills** in separate folders. Install one or more into your agent’s skills directory.
+Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **14 skills** in separate folders. Install one or more into your agent’s skills directory.
 
 - **API**: https://api.exchek.us  
 - **Docs**: https://docs.exchek.us  
@@ -19,6 +19,13 @@ Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others).
 | **exchek-risk-triage/** | Risk & escalation triage | Score export/transaction risk (low/medium/high) from classification, CSL screening, destination, and end use. Recommends auto-approve, hold for export compliance, or escalate to legal; produces a templated escalation note. Free; optional donation. |
 | **exchek-ecp/** | ECP / Policy & Training | Generate tailored Export Compliance Program (ECP) docs, SOPs, and training outlines from company footprint, product mix, and risk profile. BIS/DDTC aligned; maps screening, classification, licensing to CRM/ERP/agents. Free; optional donation. |
 | **exchek-audit-lookback/** | Retrospective audit / lookback | Run a self-audit on historical shipments (CSV or CRM export). Re-screen parties, re-check ECCNs and licensing against today's rules; produce a self-audit report with findings, risk rating, and remediation. Free; optional donation. |
+| **exchek-country-risk/** | Country / destination risk one-pager | For a given country: embargo/sanctions summary, Entity List/MEU density, typical license expectations, and high-level red flags. One-pager for deal or territory review. Free; optional donation. |
+| **exchek-deemed-export/** | Deemed export / foreign national review | Walk through 15 CFR 734.2(b): is this a release to a foreign national? Covers nationality, technology vs. software, fundamental research, license/exception. Produces a Deemed Export Review Memo (applies / does not apply / recommend counsel). Free; optional donation. |
+| **exchek-encryption/** | Encryption (ENC / 5x992) classification & notification | Help with 5A992/5D992 (and 5A002, 5D002, 5E002) classification, License Exception ENC, TSR, mass market, and BIS/NSA notification or annual report prep. Prep only; no filing. Free; optional donation. |
+| **exchek-jurisdiction/** | ITAR vs. EAR jurisdiction | Guided questionnaire (USML, "specially designed," etc.) and a short jurisdiction determination memo: recommended jurisdiction and next steps (DDTC vs. BIS classification). Free; optional donation. |
+| **exchek-partner-compliance/** | Partner / distributor compliance pack | Generate a compliance requirements pack for distributors/partners: screening expectations, re-export assurances, recordkeeping, and optional flow-down language. Free; optional donation. |
+| **exchek-red-flag-assessment/** | End-use / end-user red-flag assessment | Run the BIS "Know Your Customer" red-flag checklist (Supplement No. 3 to Part 732) for a given party or transaction; produce a red-flag assessment note (no / yes / conditional; escalate if needed). Free; optional donation. |
+| **exchek-recordkeeping/** | Recordkeeping / retention checklist | What to retain under 15 CFR 762 (and ITAR parallel), how long, and in what form. Output: retention schedule or checklist tailored to company activities (classification, licenses, screening, shipments). Free; optional donation. |
 
 ---
 
@@ -110,6 +117,83 @@ cp -r exchekskills/exchek-audit-lookback ~/.claude/skills/exchek-audit-lookback
 
 Skill name: **exchek-audit-lookback**.
 
+### Country / destination risk skill (exchek-country-risk)
+
+No API key required. Produces a one-pager for a given country (embargo/sanctions, Entity List density, license expectations, red flags).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-country-risk ~/.claude/skills/exchek-country-risk
+```
+
+Skill name: **exchek-country-risk**.
+
+### Deemed export skill (exchek-deemed-export)
+
+No API key required. Walks through 734.2(b) and produces a Deemed Export Review Memo (applies / does not apply / recommend counsel).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-deemed-export ~/.claude/skills/exchek-deemed-export
+```
+
+Skill name: **exchek-deemed-export**.
+
+### Encryption skill (exchek-encryption)
+
+No API key required. Helps with 5A992/5D992 classification, ENC/TSR, mass market, and BIS/NSA notification prep (prep only; no filing).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-encryption ~/.claude/skills/exchek-encryption
+```
+
+Skill name: **exchek-encryption**.
+
+### Jurisdiction skill (exchek-jurisdiction)
+
+No API key required. Guided questionnaire for ITAR vs. EAR; produces a short jurisdiction determination memo.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-jurisdiction ~/.claude/skills/exchek-jurisdiction
+```
+
+Skill name: **exchek-jurisdiction**.
+
+### Partner compliance skill (exchek-partner-compliance)
+
+No API key required. Generates a compliance requirements pack for distributors/partners (screening, re-export, recordkeeping, flow-down language).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-partner-compliance ~/.claude/skills/exchek-partner-compliance
+```
+
+Skill name: **exchek-partner-compliance**.
+
+### Red-flag assessment skill (exchek-red-flag-assessment)
+
+No API key required. Runs the BIS red-flag checklist (Supp. 3 to Part 732) and produces a red-flag assessment note.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-red-flag-assessment ~/.claude/skills/exchek-red-flag-assessment
+```
+
+Skill name: **exchek-red-flag-assessment**.
+
+### Recordkeeping skill (exchek-recordkeeping)
+
+No API key required. Produces a retention schedule/checklist per 15 CFR 762 (and ITAR parallel).
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-recordkeeping ~/.claude/skills/exchek-recordkeeping
+```
+
+Skill name: **exchek-recordkeeping**.
+
 ---
 
 ## How to use
@@ -120,6 +204,13 @@ Skill name: **exchek-audit-lookback**.
 - **Export documentation** — Provide shipment, classification, and screening refs; ask (e.g. "Prepare export documentation for this shipment"). Get invoice block, SLI, AES/EEI data and AES required vs exempt determination.
 - **ECP / Policy & Training** — Provide company footprint, product mix, and risk profile; ask (e.g. "Generate an ECP for our company", "Draft SOPs for our export compliance process"). Get tailored ECP doc, SOPs, and/or training outlines.
 - **Retrospective audit / lookback** — Provide a CSV or CRM export of historical shipments; ask (e.g. "Audit my historical shipments", "Self-audit report for this CSV"). Get a self-audit report with findings, risk rating, and remediation.
+- **Country risk** — Ask (e.g. "Country risk one-pager for Germany", "Can we go there? Summary for [country]"). Get a one-pager with embargo/sanctions, Entity List density, license expectations, and red flags.
+- **Deemed export** — Provide recipient and what is being released; ask (e.g. "Deemed export review for this release", "Does deemed export apply?"). Get a Deemed Export Review Memo.
+- **Encryption** — Provide product/item description and destination; ask (e.g. "Encryption classification for this product", "Do we need to notify BIS?"). Get an encryption classification and notification memo.
+- **Jurisdiction** — Ask (e.g. "Is this ITAR or EAR?", "Jurisdiction check for this item"). Get a jurisdiction determination memo with next steps.
+- **Partner compliance** — Ask (e.g. "Compliance pack for our distributors", "Partner compliance requirements"). Get a compliance requirements pack and optional flow-down language.
+- **Red-flag assessment** — Provide party/transaction; ask (e.g. "Red-flag assessment for this party", "Run the red-flag checklist"). Get a red-flag assessment note.
+- **Recordkeeping** — Ask (e.g. "Recordkeeping schedule for our activities", "What do we need to retain?"). Get a retention schedule or checklist.
 
 See each skill’s **README.md** and **SKILL.md** inside its folder for full instructions.
 
@@ -140,9 +231,16 @@ See each skill’s **README.md** and **SKILL.md** inside its folder for full ins
    cp -r exchekskills/exchek-csl ~/.claude/skills/exchek-csl
    cp -r exchekskills/exchek-license ~/.claude/skills/exchek-license
    cp -r exchekskills/exchek-export-docs ~/.claude/skills/exchek-export-docs
-   cp -r exchekskills/exchek-risk-triage ~/.cursor/skills/exchek-risk-triage
+   cp -r exchekskills/exchek-risk-triage ~/.claude/skills/exchek-risk-triage
    cp -r exchekskills/exchek-ecp ~/.claude/skills/exchek-ecp
    cp -r exchekskills/exchek-audit-lookback ~/.claude/skills/exchek-audit-lookback
+   cp -r exchekskills/exchek-country-risk ~/.claude/skills/exchek-country-risk
+   cp -r exchekskills/exchek-deemed-export ~/.claude/skills/exchek-deemed-export
+   cp -r exchekskills/exchek-encryption ~/.claude/skills/exchek-encryption
+   cp -r exchekskills/exchek-jurisdiction ~/.claude/skills/exchek-jurisdiction
+   cp -r exchekskills/exchek-partner-compliance ~/.claude/skills/exchek-partner-compliance
+   cp -r exchekskills/exchek-red-flag-assessment ~/.claude/skills/exchek-red-flag-assessment
+   cp -r exchekskills/exchek-recordkeeping ~/.claude/skills/exchek-recordkeeping
    ```
    (Adjust paths if the user’s clone or skills directory is different.)
 4. **Restart or reload** — Restart the agent or run its “reload skills” command (e.g. `claude skills list`) so it uses the updated skill files.

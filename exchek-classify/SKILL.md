@@ -10,7 +10,7 @@ Classify items for U.S. export control (15 CFR Part 774, 22 CFR Part 121) using 
 
 ## When to use
 
-Invoke this skill when the user asks to classify an item for export, determine ECCN or jurisdiction, or check license requirements. Example triggers: "Classify this item for export", "What's the ECCN for…?", "Is this ITAR or EAR?", "Export classification for [product]", "Do we need a license for shipping to [country]?"
+Invoke this skill when the user asks to classify an item for export, determine ECCN or jurisdiction, or check license requirements. Example triggers: "Classify this item for export", "What's the ECCN for…?", "Is this ITAR or EAR?", "Export classification for [product]", "Do we need a license for shipping to [country]?" If the user already has a jurisdiction memo from the ExChek Jurisdiction skill (exchek-jurisdiction), they can provide it and proceed to ECCN/USML.
 
 ## Regulatory data (snapshots / eCFR)
 
