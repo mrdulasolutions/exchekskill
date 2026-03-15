@@ -1,7 +1,11 @@
 ---
 name: exchek-partner-compliance
-description: Generate a compliance requirements pack for distributors/partners: screening expectations, re-export assurances, recordkeeping, and optional flow-down language. Use when the user wants a partner or distributor compliance pack, channel compliance requirements, or flow-down language for distribution agreements.
-compatibility: Claude Code, Claude desktop, Claude CoWork, Claude web
+description: "Generate a compliance requirements pack for distributors/partners: screening expectations, re-export assurances, recordkeeping, and optional flow-down language. Use when the user wants a partner or distributor compliance pack, channel compliance requirements, or flow-down language for distribution agreements."
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
 ---
 
 # ExChek Partner / Distributor Compliance Pack
