@@ -1,6 +1,6 @@
 # ExChek Skills
 
-Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **six skills** in separate folders. Install one or more into your agent’s skills directory.
+Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **seven skills** in separate folders. Install one or more into your agent’s skills directory.
 
 - **API**: https://api.exchek.us  
 - **Docs**: https://docs.exchek.us  
@@ -18,6 +18,7 @@ Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others).
 | **exchek-export-docs/** | Export documentation & filing helper | Draft commercial invoice export block, packing list, SLI, and AES/EEI data from shipment + classification + screening. Flags when AES is required vs exempt. Prep only; no actual filing. Free; optional donation. |
 | **exchek-risk-triage/** | Risk & escalation triage | Score export/transaction risk (low/medium/high) from classification, CSL screening, destination, and end use. Recommends auto-approve, hold for export compliance, or escalate to legal; produces a templated escalation note. Free; optional donation. |
 | **exchek-ecp/** | ECP / Policy & Training | Generate tailored Export Compliance Program (ECP) docs, SOPs, and training outlines from company footprint, product mix, and risk profile. BIS/DDTC aligned; maps screening, classification, licensing to CRM/ERP/agents. Free; optional donation. |
+| **exchek-audit-lookback/** | Retrospective audit / lookback | Run a self-audit on historical shipments (CSV or CRM export). Re-screen parties, re-check ECCNs and licensing against today's rules; produce a self-audit report with findings, risk rating, and remediation. Free; optional donation. |
 
 ---
 
@@ -98,6 +99,17 @@ cp -r exchekskills/exchek-ecp ~/.claude/skills/exchek-ecp
 
 Skill name: **exchek-ecp**.
 
+### Retrospective audit / lookback skill (exchek-audit-lookback)
+
+No API key required. Runs a self-audit on historical shipments (CSV or CRM export); guides re-screening and re-check of ECCNs and licensing; produces a self-audit report with findings and remediation.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-audit-lookback ~/.claude/skills/exchek-audit-lookback
+```
+
+Skill name: **exchek-audit-lookback**.
+
 ---
 
 ## How to use
@@ -107,6 +119,7 @@ Skill name: **exchek-ecp**.
 - **Risk triage** — After classification and screening, ask to triage risk (e.g. “Triage risk for this transaction”, “Should we hold or escalate?”). Get a risk score and templated escalation note.
 - **Export documentation** — Provide shipment, classification, and screening refs; ask (e.g. "Prepare export documentation for this shipment"). Get invoice block, SLI, AES/EEI data and AES required vs exempt determination.
 - **ECP / Policy & Training** — Provide company footprint, product mix, and risk profile; ask (e.g. "Generate an ECP for our company", "Draft SOPs for our export compliance process"). Get tailored ECP doc, SOPs, and/or training outlines.
+- **Retrospective audit / lookback** — Provide a CSV or CRM export of historical shipments; ask (e.g. "Audit my historical shipments", "Self-audit report for this CSV"). Get a self-audit report with findings, risk rating, and remediation.
 
 See each skill’s **README.md** and **SKILL.md** inside its folder for full instructions.
 
@@ -129,6 +142,7 @@ See each skill’s **README.md** and **SKILL.md** inside its folder for full ins
    cp -r exchekskills/exchek-export-docs ~/.claude/skills/exchek-export-docs
    cp -r exchekskills/exchek-risk-triage ~/.cursor/skills/exchek-risk-triage
    cp -r exchekskills/exchek-ecp ~/.claude/skills/exchek-ecp
+   cp -r exchekskills/exchek-audit-lookback ~/.claude/skills/exchek-audit-lookback
    ```
    (Adjust paths if the user’s clone or skills directory is different.)
 4. **Restart or reload** — Restart the agent or run its “reload skills” command (e.g. `claude skills list`) so it uses the updated skill files.

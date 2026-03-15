@@ -1,0 +1,13 @@
+# ExChek Retrospective Audit / Lookback Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-audit-lookback
+description: Run a retrospective audit or lookback on historical shipments/transactions (CSV or CRM export). Re-screen parties against current lists, re-check ECCNs and license determinations against today's rules, and produce a self-audit report with findings, risk rating, and remediation. Use when the user wants to audit historical exports, re-screen past parties, or get a self-audit report with remediation suggestions.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md
