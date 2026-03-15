@@ -37,7 +37,7 @@ Fill the user template from the user (or from a prior classification), then run 
 
 The memo is BIS audit-ready and should be retained per 15 CFR Part 762. Behavior depends on environment:
 
-- **Claude CoWork, Claude Desktop (with file access), Cursor, or Claude Code:** At the start, ask which folder to save memos in (e.g. Desktop, Documents, or "ExChek Reports"). Ask whether they want the memo as Word (.docx) or Apple Pages (.pages) and Mac or Windows. Save each completed memo as `ExChek-License-YYYY-MM-DD-ShortName.md`. If they asked for .docx or .pages, run the **ExChek Document Converter**: from the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-memo.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions. If the Document Converter is not available, output the full memo in chat and suggest installing it from the ExChek skills repo.
+- **Claude CoWork, Claude Desktop (with file access), Cursor, or Claude Code:** At the start, ask which folder to save memos in (e.g. Desktop, Documents, or "ExChek Reports"). Ask whether they want the memo as Word (.docx) or Apple Pages (.pages) and Mac or Windows. Produce **only** a .docx in that folder: write the filled memo to a temp .md (e.g. `.ExChek-License-temp.md`), run the **ExChek Document Converter** from the workspace root: `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-temp.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo), rename the resulting .docx to `ExChek-License-YYYY-MM-DD-ShortName.docx`, then delete the temp .md. **Do not save or leave any .md report file** in the user's folder. Give platform/format instructions. If the Document Converter is not available, output the full memo in chat.
 - **Claude web or no file access:** Output the full memo in chat and instruct the user to save it to their compliance records.
 
 ## CUI and classified information
@@ -51,7 +51,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Item summary, ECCN (or EAR99), destination country, end user, end use. Optionally value/quantity for LVS. If the user has a prior classification report, accept ECCN from it.
 3. **Get regulatory data** — Call `GET https://api.exchek.us/api/ecfr/774`, `/api/ecfr/738`, `/api/ecfr/740`. If 503, use eCFR title-15 and extract 774, 738, 740.
 4. **Determine license requirement** — Apply Country Chart for destination; list reasons for control; evaluate exceptions per § 740.2 and each exception's conditions. Conclude: license required or exception available (cite section).
-5. **Build the memo** — Fill [templates/License Determination Memo.md](templates/License%20Determination%20Memo.md) (all 6 sections). Save as `ExChek-License-YYYY-MM-DD-ShortName.md` if you can write files; run report-to-docx if requested; otherwise output full memo in chat.
+5. **Build the memo** — Fill [templates/License Determination Memo.md](templates/License%20Determination%20Memo.md) (all 6 sections). If you can write files: produce **only** a .docx (write filled content to temp .md → run ExChek Document Converter on it → rename .docx to `ExChek-License-YYYY-MM-DD-ShortName.docx` → delete temp .md). Do not save a .md file in the user's folder. Otherwise output full memo in chat.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. If a donation reference is present in the skill, use it; otherwise mention that ExChek is free and optional donations support the project.
 
 ## Report template (license determination memo)
@@ -60,7 +60,7 @@ After determining license or exception, fill [templates/License Determination Me
 
 ## Report format (Mac/Windows)
 
-For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After generating the .docx (via the ExChek Document Converter):
+For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After writing the .docx to the report folder:
 
 | User choice | What to say |
 |-------------|-------------|

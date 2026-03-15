@@ -6,13 +6,13 @@ compatibility: Claude Code, Claude desktop, Claude CoWork, Claude web, Cursor, P
 
 # ExChek Document Converter
 
-Convert ExChek markdown reports (screening records, classification memos, license memos, etc.) to **client-ready Word (.docx)**. Other ExChek skills (CSL, classification, license, jurisdiction, and the rest) produce .md reports; when the user asks for .docx or Apple Pages, run this converter on the saved file. This skill also provides **prompt-style document output guidelines** so agents can produce professional, client-ready output in any environment.
+Convert ExChek markdown reports (screening records, classification memos, license memos, etc.) to **client-ready Word (.docx)**. Other ExChek skills (CSL, classification, license, jurisdiction, and the rest) produce **.docx only** — they do not save .md report files in the user's folder; they write content to a temporary .md, run this converter, then deliver only the .docx and delete the temp file. Use this skill when the user has an **existing** .md file they want converted to .docx, or when another skill invokes the converter on a temp path. This skill also provides **prompt-style document output guidelines** for client-ready output in any environment.
 
 ## When to use
 
-- The user or another skill has saved an ExChek report as a `.md` file and wants a **Word (.docx)** or **Apple Pages** (.pages) version.
-- Another ExChek skill instructs you to "run the ExChek Document Converter" on a path.
-- The user wants a **client-ready** or **professional** report and you need guidelines on how to structure your output for export to Word, copy into Word, or conversion via the script.
+- The user has an **existing** ExChek report (or any markdown report) as a `.md` file and wants a **Word (.docx)** or **Apple Pages** (.pages) version.
+- Another ExChek skill instructs you to run the ExChek Document Converter on a **temp** .md path (they produce .docx only and use a temp file internally; do not leave .md in the user's folder).
+- The user wants **client-ready** or **professional** report guidelines for export to Word, copy into Word, or conversion via the script.
 
 ## Document output guidelines (for all agents)
 
@@ -28,14 +28,14 @@ When the user wants a .docx, client-ready, or professional report, follow these 
 **By environment:**
 
 - **If your environment can export the response to Word:** Tell the user to use "Export to Word" or "Download as .docx" (or equivalent) on this response.
-- **If you have file write access and the ExChek Document Converter is available:** Save the report as .md, run the converter script (see Flow below), then tell the user to open the **.docx file** (not the .md).
+- **If you have file write access and the ExChek Document Converter is available:** Other content skills write to a temp .md, run the converter, then deliver only the .docx. For standalone conversion, run the converter on the user's existing .md path (see Flow below), then tell the user to open the **.docx file**.
 - **If the user will copy into Word:** Say: "Copy the report below into Microsoft Word, then select each section title and apply **Heading 1** or **Heading 2** from the Styles pane for a professional look."
 
 **Reminder:** When you generate a .docx via the script, always tell the user to open the **.docx** file, not the .md, so they see formatted output.
 
 ## Flow
 
-1. **Input** — You have a path to a saved ExChek markdown report (e.g. from the user or from another skill that just saved the report).
+1. **Input** — You have a path to a markdown report: either the user's existing .md file, or a **temporary** .md that another ExChek skill wrote (in that case, the calling skill will rename the output .docx and delete the temp .md; the user receives only the .docx).
 2. **Run the converter** — From the **workspace root** (or the directory where ExChek skills are installed), run:
    - `npm install --prefix exchek-docx/scripts` once if needed (or `exchek-skill-docx/scripts` in the private repo).
    - `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-report.md>`
@@ -55,5 +55,5 @@ After generating the .docx, tell the user what to do based on their platform and
 
 ## Reference
 
-- Other ExChek skills (CSL, classification, license, etc.) reference this converter for .docx/.pages output and should follow these document output guidelines when the user asks for .docx or a client-ready report. Install this skill alongside them for one-step report → .docx.
+- Other ExChek skills (CSL, classification, license, etc.) produce .docx only (no .md in the user's folder); they call this converter on a temp file and deliver the .docx. Install this skill alongside them. Use this skill for standalone conversion when the user has an existing .md to convert.
 - Docs: https://docs.exchek.us

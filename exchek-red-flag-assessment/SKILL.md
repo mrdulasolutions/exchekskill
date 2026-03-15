@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Party/counterparty, transaction context, and facts needed for the checklist. Use [references/end-use-red-flag-guidance.md](references/end-use-red-flag-guidance.md) to drive questions (e.g., "Is the shipping destination different from the buyer's country or billing address?") so the checklist is filled systematically.
 3. **Run checklist** — For each red flag in the reference, set Present? (Yes / No / Conditional) and Notes from user inputs and the guidance.
 4. **Overall assessment** — Decide **No red flags** / **Red flags present** / **Conditional** and escalation recommendation per [references/end-use-red-flag-guidance.md](references/end-use-red-flag-guidance.md).
-5. **Build and save note** — Fill [templates/Red Flag Assessment Note.md](templates/Red%20Flag%20Assessment%20Note.md) completely; save as `ExChek-RedFlagAssessment-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-note.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full note in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
+5. **Build and save note** — Fill [templates/Red Flag Assessment Note.md](templates/Red%20Flag%20Assessment%20Note.md) completely. If you can write files: write the filled content to a **temporary** .md in the folder from step 1 (e.g. `.ExChek-RedFlagAssessment-temp.md`), run the **ExChek Document Converter** from the workspace root: `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-temp.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Rename the resulting .docx to `ExChek-RedFlagAssessment-YYYY-MM-DD-ShortName.docx`, then delete the temp .md. **Do not save or leave any .md report file** in the user's folder. Give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full note in chat and instruct the user to save it.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Red Flag Assessment Note)
@@ -41,7 +41,7 @@ After running the checklist and determining overall assessment and escalation re
 
 ## Report format (Mac/Windows)
 
-For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After generating the .docx (via the ExChek Document Converter):
+For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After writing the .docx to the report folder:
 
 | User choice | What to say |
 |-------------|-------------|
