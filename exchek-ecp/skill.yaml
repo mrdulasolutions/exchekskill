@@ -1,0 +1,13 @@
+# ExChek ECP / Policy & Training Generator Skill manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-ecp
+description: Generate tailored Export Compliance Program (ECP) docs, SOPs, and training outlines from company footprint, product mix, and risk profile. Aligns with BIS/DDTC guidance and maps screening, classification, and licensing to CRM/ERP/agents. Use when the user wants to create or refresh an ECP, draft export compliance SOPs, or generate training outlines.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+version: "1"
+main: SKILL.md

@@ -1,6 +1,6 @@
 # ExChek Skills
 
-Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **five skills** in separate folders. Install one or more into your agent’s skills directory.
+Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **six skills** in separate folders. Install one or more into your agent’s skills directory.
 
 - **API**: https://api.exchek.us  
 - **Docs**: https://docs.exchek.us  
@@ -15,8 +15,9 @@ Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others).
 | **exchek-classify/** | ECCN Classification | Classify items for U.S. export control (15 CFR Part 774, 22 CFR Part 121). Human-in-the-loop; audit-ready report from a template. Free; optional donation. |
 | **exchek-csl/** | Consolidated Screening List search | Search the Trade.gov Consolidated Screening List (CSL) via API. Requires a free API key from [developer.trade.gov](https://developer.trade.gov). Supports fuzzy search and all API parameters. |
 | **exchek-license/** | License determination | Determine EAR license requirements and exceptions (Part 738 Country Chart, Part 740) for a given item, ECCN, destination, and end use. Produces a short audit-ready license determination memo. Free; optional donation. |
-| **exchek-export-docs/** | Export documentation & filing helper | Draft commercial invoice export block, packing list, SLI, and AES/EEI data from shipment + classification + screening. Flags when AES is required vs exempt. Prep only; no actual filing. No API key required. |
+| **exchek-export-docs/** | Export documentation & filing helper | Draft commercial invoice export block, packing list, SLI, and AES/EEI data from shipment + classification + screening. Flags when AES is required vs exempt. Prep only; no actual filing. Free; optional donation. |
 | **exchek-risk-triage/** | Risk & escalation triage | Score export/transaction risk (low/medium/high) from classification, CSL screening, destination, and end use. Recommends auto-approve, hold for export compliance, or escalate to legal; produces a templated escalation note. Free; optional donation. |
+| **exchek-ecp/** | ECP / Policy & Training | Generate tailored Export Compliance Program (ECP) docs, SOPs, and training outlines from company footprint, product mix, and risk profile. BIS/DDTC aligned; maps screening, classification, licensing to CRM/ERP/agents. Free; optional donation. |
 
 ---
 
@@ -64,17 +65,6 @@ cp -r exchekskills/exchek-license ~/.claude/skills/exchek-license
 
 Skill name: **exchek-license**.
 
-### Export documentation skill (exchek-export-docs)
-
-No API key required. Drafts invoice block, packing list, SLI, and AES/EEI data; documents when AES filing is required vs exempt.
-
-```bash
-git clone https://github.com/mrdulasolutions/exchekskills exchekskills
-cp -r exchekskills/exchek-export-docs ~/.claude/skills/exchek-export-docs
-```
-
-Skill name: **exchek-export-docs**.
-
 ### Risk & escalation triage skill (exchek-risk-triage)
 
 No API key required. Consumes classification and screening results (from other ExChek skills or user-provided summaries).
@@ -86,15 +76,37 @@ cp -r exchekskills/exchek-risk-triage ~/.cursor/skills/exchek-risk-triage
 
 Skill name: **exchek-risk-triage**.
 
+### Export documentation skill (exchek-export-docs)
+
+No API key required. Draft invoice block, packing list, SLI, AES/EEI data; flags when AES is required vs exempt.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-export-docs ~/.claude/skills/exchek-export-docs
+```
+
+Skill name: **exchek-export-docs**.
+
+### ECP / Policy & Training skill (exchek-ecp)
+
+No API key required. Generates ECP documents, SOPs, and training outlines from company footprint, product mix, and risk profile.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-ecp ~/.claude/skills/exchek-ecp
+```
+
+Skill name: **exchek-ecp**.
+
 ---
 
 ## How to use
 
 - **Classification** — Ask your agent to classify an item for export (e.g. “Classify this pressure sensor for export”, “What’s the ECCN for [product]?”). The skill collects details, fetches 774/121 data, runs Order of Review, and builds the report; you confirm jurisdiction and ECCN.
 - **CSL search** — Ask your agent to search the Consolidated Screening List (e.g. “Search the CSL for [name]”, “Screen this entity against trade lists”). Use your Trade.gov API key when prompted.
-- **License determination** — Ask your agent whether a license is needed or which exception applies (e.g. "Do we need a license to ship ECCN 5A992 to Germany?", "License determination for [item] to [country]."). No API key required.
-- **Export documentation** — Ask your agent to prepare export docs (e.g. "Prepare export documentation for this shipment", "Is AES required for this export?"). Provide shipment, classification, and screening refs; the skill builds the Export Documentation Package and AES determination.
-- **Risk triage** — After classification and screening, ask to triage risk (e.g. "Triage risk for this transaction", "Should we hold or escalate?"). Get a risk score and templated escalation note.
+- **Risk triage** — After classification and screening, ask to triage risk (e.g. “Triage risk for this transaction”, “Should we hold or escalate?”). Get a risk score and templated escalation note.
+- **Export documentation** — Provide shipment, classification, and screening refs; ask (e.g. "Prepare export documentation for this shipment"). Get invoice block, SLI, AES/EEI data and AES required vs exempt determination.
+- **ECP / Policy & Training** — Provide company footprint, product mix, and risk profile; ask (e.g. "Generate an ECP for our company", "Draft SOPs for our export compliance process"). Get tailored ECP doc, SOPs, and/or training outlines.
 
 See each skill’s **README.md** and **SKILL.md** inside its folder for full instructions.
 
@@ -116,6 +128,7 @@ See each skill’s **README.md** and **SKILL.md** inside its folder for full ins
    cp -r exchekskills/exchek-license ~/.claude/skills/exchek-license
    cp -r exchekskills/exchek-export-docs ~/.claude/skills/exchek-export-docs
    cp -r exchekskills/exchek-risk-triage ~/.cursor/skills/exchek-risk-triage
+   cp -r exchekskills/exchek-ecp ~/.claude/skills/exchek-ecp
    ```
    (Adjust paths if the user’s clone or skills directory is different.)
 4. **Restart or reload** — Restart the agent or run its “reload skills” command (e.g. `claude skills list`) so it uses the updated skill files.
