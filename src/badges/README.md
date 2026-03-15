@@ -1,21 +1,37 @@
-# ExChek badge assets
+# ExChek badges
 
-SVG badges for use in READMEs, docs, and marketing (e.g. “Powered by ExChek”, “Agentic Skills”).
+Use these SVGs in your README, docs, or site to show “Powered by ExChek” or that you use ExChek skills.
 
-This folder is synced to the public repo so users can reference the images without cloning the full skill set.
+## Available badges
 
-## Using badges from the public repo
+| Badge | Use case |
+|-------|----------|
+| **ExChek Powered Pill (Purple Background).svg** | Dark themes, colored backgrounds |
+| **ExChek Powered Pill (White Background).svg** | Light themes, white/light backgrounds |
 
-**Raw URL (e.g. in README or HTML):**
+## How to use
 
-```
-https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/<filename>.svg
-```
-
-**Example (replace with your badge filename):**
+**In Markdown (e.g. GitHub README):**
 
 ```markdown
-![ExChek](https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/exchek-badge.svg)
+[![Powered by ExChek](https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/ExChek%20Powered%20Pill%20(White%20Background).svg)](https://exchek.us)
 ```
 
-Add your `.svg` files to this folder in the private repo; they will be published to the public repo when you run the publish steps in `exchek-skill/PUBLISH.md`.
+**Purple pill (dark backgrounds):**
+
+```markdown
+[![Powered by ExChek](https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/ExChek%20Powered%20Pill%20(Purple%20Background).svg)](https://exchek.us)
+```
+
+**In HTML:**
+
+```html
+<a href="https://exchek.us"><img src="https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/ExChek%20Powered%20Pill%20(White%20Background).svg" alt="Powered by ExChek" width="120" /></a>
+```
+
+**Raw URLs (for spaces/parens in filenames, use `%20` and `%28` / `%29`):**
+
+- White: `https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/ExChek%20Powered%20Pill%20(White%20Background).svg`
+- Purple: `https://github.com/mrdulasolutions/exchekskills/raw/main/src/badges/ExChek%20Powered%20Pill%20(Purple%20Background).svg`
+
+Link to [exchek.us](https://exchek.us) or [docs.exchek.us](https://docs.exchek.us) so people can learn more.
