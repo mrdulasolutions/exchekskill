@@ -153,4 +153,4 @@ If the user cloned the repo directly into the skills directory (e.g. `~/.claude/
 
 ## License
 
-ExChek, Inc. terms.
+ExChek, Inc. Proprietary. See the [LICENSE](LICENSE) file in this repository and the [Terms and Conditions](https://docs.exchek.us/docs/legal/terms).
