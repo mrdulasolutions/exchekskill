@@ -1,6 +1,6 @@
 # ExChek Document Converter
 
-Converts ExChek markdown reports to client-ready **Word (.docx)**. Used by other ExChek skills (CSL, classification, license, jurisdiction, risk triage, etc.); can also be run standalone.
+Converts ExChek markdown reports to client-ready **Word (.docx)**. Used by other ExChek skills (CSL, classification, license, jurisdiction, risk triage, etc.); can also be run standalone. The skill also provides **prompt-style document output guidelines** for agents (see SKILL.md), so it is useful even when the converter script is not installed.
 
 **Install:** Copy this folder into your agent's skills directory (e.g. `exchek-docx` in the public repo). For .docx output from CSL, classification, or any other ExChek skill, install both the content skill and this converter.
 

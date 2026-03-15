@@ -34,7 +34,7 @@ After building the package, fill [templates/Export Documentation Package.md](tem
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via the ExChek Document Converter):
+For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

@@ -72,7 +72,7 @@ After classification is approved, fill [templates/Classification Report.md](temp
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via the ExChek Document Converter), tell the user what to do based on their chosen platform and format:
+For prompt-style guidelines on producing client-ready document output in any environment, follow the **ExChek Document Converter** skill's **Document output guidelines**. After generating the .docx (via the ExChek Document Converter), tell the user what to do based on their chosen platform and format:
 
 | User choice | What to say |
 |-------------|-------------|
