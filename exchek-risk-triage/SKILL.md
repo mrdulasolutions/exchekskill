@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Classification (ECCN, jurisdiction), screening results (hits, lists, adjudication status), destination, end user/end use, optional license/exception and transaction ID. Accept pasted data or "use my last CSL report and classification memo".
 3. **Score risk** — Apply [references/risk-scoring-guidance.md](references/risk-scoring-guidance.md): evaluate screening, classification, destination, end use, and license factors; output **Low** / **Medium** / **High** with short rationale.
 4. **Determine disposition** — Map risk and screening outcome to **Auto-approve** | **Hold for export compliance** | **Escalate to legal**; state reason. Use [references/escalation-best-practices.md](references/escalation-best-practices.md).
-5. **Build triage record** — Fill [templates/Risk Triage and Escalation Note.md](templates/Risk%20Triage%20and%20Escalation%20Note.md) completely: transaction summary, risk score, disposition, rationale, red flags (if any), escalation block (when hold or escalate). Save as `ExChek-RiskTriage-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-note.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full note in chat and instruct the user to save it to their compliance records.
+5. **Build triage record** — Fill [templates/Risk Triage and Escalation Note.md](templates/Risk%20Triage%20and%20Escalation%20Note.md) completely: transaction summary, risk score, disposition, rationale, red flags (if any), escalation block (when hold or escalate). Save as `ExChek-RiskTriage-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-note.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full note in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Risk Triage and Escalation Note)
@@ -41,7 +41,7 @@ After scoring risk and determining disposition, fill [templates/Risk Triage and 
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-note.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

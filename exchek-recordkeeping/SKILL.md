@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Company activities (classification, license determinations, screening, shipments, deemed export, encryption, other), jurisdiction (EAR only vs. EAR + ITAR), optional ECP/storage notes.
 3. **Apply reference** — Use [references/recordkeeping-retention-best-practices.md](references/recordkeeping-retention-best-practices.md) to select record types, retention periods, form, and citations for the chosen activities and jurisdiction.
 4. **Build document** — Fill [templates/Recordkeeping Retention Schedule and Checklist.md](templates/Recordkeeping%20Retention%20Schedule%20and%20Checklist.md) completely; omit or mark N/A rows for activities not in scope.
-5. **Save and convert** — Save as `ExChek-Recordkeeping-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-file.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full document in chat and instruct the user to save it to their compliance records.
+5. **Save and convert** — Save as `ExChek-Recordkeeping-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-file.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full document in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Recordkeeping Retention Schedule and Checklist)
@@ -41,7 +41,7 @@ After applying the reference and selecting record types for the user's activitie
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-file.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

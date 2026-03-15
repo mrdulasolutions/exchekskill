@@ -1,6 +1,6 @@
 # ExChek Skills
 
-Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **14 skills** in separate folders. Install one or more into your agent’s skills directory.
+Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others). This repo contains **15 skills** in separate folders. Content skills (classification, CSL, license, etc.) that produce reports support **Word (.docx)** and **Apple Pages** output when you also install the **ExChek Document Converter** skill (exchek-docx). Install one or more into your agent’s skills directory.
 
 - **API**: https://api.exchek.us  
 - **Docs**: https://docs.exchek.us  
@@ -26,6 +26,7 @@ Export compliance skills for AI agents (Claude, Perplexity, OpenAI, and others).
 | **exchek-partner-compliance/** | Partner / distributor compliance pack | Generate a compliance requirements pack for distributors/partners: screening expectations, re-export assurances, recordkeeping, and optional flow-down language. Free; optional donation. |
 | **exchek-red-flag-assessment/** | End-use / end-user red-flag assessment | Run the BIS "Know Your Customer" red-flag checklist (Supplement No. 3 to Part 732) for a given party or transaction; produce a red-flag assessment note (no / yes / conditional; escalate if needed). Free; optional donation. |
 | **exchek-recordkeeping/** | Recordkeeping / retention checklist | What to retain under 15 CFR 762 (and ITAR parallel), how long, and in what form. Output: retention schedule or checklist tailored to company activities (classification, licenses, screening, shipments). Free; optional donation. |
+| **exchek-docx/** | Document Converter | Converts ExChek markdown reports to client-ready Word (.docx). Used by other ExChek skills when the user asks for .docx or .pages; can also be run standalone. Install alongside any content skill for one-step report → .docx. Free. |
 
 ---
 
@@ -194,6 +195,17 @@ cp -r exchekskills/exchek-recordkeeping ~/.claude/skills/exchek-recordkeeping
 
 Skill name: **exchek-recordkeeping**.
 
+### Document Converter skill (exchek-docx)
+
+Converts ExChek markdown reports to client-ready Word (.docx). Install this skill alongside any content skill (classification, CSL, license, etc.) when you want .docx or .pages output. The content skill will instruct the agent to run the Document Converter on the saved report.
+
+```bash
+git clone https://github.com/mrdulasolutions/exchekskills exchekskills
+cp -r exchekskills/exchek-docx ~/.claude/skills/exchek-docx
+```
+
+From the directory that contains your skills (e.g. workspace root), run `npm install --prefix exchek-docx/scripts` once, then `node exchek-docx/scripts/report-to-docx.mjs <path-to-report.md>` to generate the .docx. Skill name: **exchek-docx**.
+
 ---
 
 ## How to use
@@ -241,6 +253,7 @@ See each skill’s **README.md** and **SKILL.md** inside its folder for full ins
    cp -r exchekskills/exchek-partner-compliance ~/.claude/skills/exchek-partner-compliance
    cp -r exchekskills/exchek-red-flag-assessment ~/.claude/skills/exchek-red-flag-assessment
    cp -r exchekskills/exchek-recordkeeping ~/.claude/skills/exchek-recordkeeping
+   cp -r exchekskills/exchek-docx ~/.claude/skills/exchek-docx
    ```
    (Adjust paths if the user’s clone or skills directory is different.)
 4. **Restart or reload** — Restart the agent or run its “reload skills” command (e.g. `claude skills list`) so it uses the updated skill files.

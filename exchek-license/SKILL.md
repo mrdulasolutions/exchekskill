@@ -37,7 +37,7 @@ Fill the user template from the user (or from a prior classification), then run 
 
 The memo is BIS audit-ready and should be retained per 15 CFR Part 762. Behavior depends on environment:
 
-- **Claude CoWork, Claude Desktop (with file access), Cursor, or Claude Code:** At the start, ask which folder to save memos in (e.g. Desktop, Documents, or "ExChek Reports"). Ask whether they want the memo as Word (.docx) or Apple Pages (.pages) and Mac or Windows. Save each completed memo as `ExChek-License-YYYY-MM-DD-ShortName.md`. If they asked for .docx or .pages, run `node scripts/report-to-docx.mjs <path-to-memo.md>` from the skill directory (run `npm install --prefix scripts` once if needed) and give platform/format instructions.
+- **Claude CoWork, Claude Desktop (with file access), Cursor, or Claude Code:** At the start, ask which folder to save memos in (e.g. Desktop, Documents, or "ExChek Reports"). Ask whether they want the memo as Word (.docx) or Apple Pages (.pages) and Mac or Windows. Save each completed memo as `ExChek-License-YYYY-MM-DD-ShortName.md`. If they asked for .docx or .pages, run the **ExChek Document Converter**: from the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-memo.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions. If the Document Converter is not available, output the full memo in chat and suggest installing it from the ExChek skills repo.
 - **Claude web or no file access:** Output the full memo in chat and instruct the user to save it to their compliance records.
 
 ## CUI and classified information
@@ -60,7 +60,7 @@ After determining license or exception, fill [templates/License Determination Me
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-memo.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

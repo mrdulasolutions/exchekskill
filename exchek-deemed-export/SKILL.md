@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Recipient (nationality/citizenship, immigration status), what is being released (technology/software description), context (employment/visit/collaboration), optional ECCN/classification, fundamental research or other carve-outs. Accept pasted data or references to prior ExChek reports.
 3. **Apply 734.2(b) analysis** — Use [references/deemed-export-best-practices.md](references/deemed-export-best-practices.md): (a) Is the recipient a foreign national? (b) Is there a release of technology or source code? (c) Fundamental research, public domain, or other exception? (d) If release to a foreign national, license or exception for the "destination" (country of citizenship or permanent residence)?
 4. **Reach conclusion** — **Deemed export does not apply** | **Deemed export applies** (license required or exception with citation) | **Recommend counsel** (with brief reason). Use the reference for when to recommend counsel.
-5. **Build memo** — Fill [templates/Deemed Export Review Memo.md](templates/Deemed%20Export%20Review%20Memo.md) completely: document header, scenario summary, analysis (foreign national status, nature of release, fundamental research/carve-out, license/exception), conclusion, AI disclosure. Save as `ExChek-DeemedExport-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-memo.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full memo in chat and instruct the user to save it to their compliance records.
+5. **Build memo** — Fill [templates/Deemed Export Review Memo.md](templates/Deemed%20Export%20Review%20Memo.md) completely: document header, scenario summary, analysis (foreign national status, nature of release, fundamental research/carve-out, license/exception), conclusion, AI disclosure. Save as `ExChek-DeemedExport-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-memo.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full memo in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Deemed Export Review Memo)
@@ -41,7 +41,7 @@ After completing the 734.2(b) analysis and conclusion, fill [templates/Deemed Ex
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-memo.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

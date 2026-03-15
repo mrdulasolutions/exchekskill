@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect historical data** — User provides CSV (or CRM export). Parse and validate columns; if column names differ, ask for mapping (see [references/csv-input-spec.md](references/csv-input-spec.md)). Summarize: number of transactions, date range, number of unique parties.
 3. **Re-screen path** — Extract unique parties (consignee, end user, etc.); ask user to re-screen them (e.g. exchek-skill-csl or their screening tool) and provide current results (pasted summary or file: party → no hits / hit(s) with list and adjudication). Merge results and build screening-related findings: "Party now on list" or "New hit — needs adjudication", "Re-screen recommended" (if no current result), or "No change" (document re-screened date when provided).
 4. **Re-check ECCN and license** — For each row with ECCN/destination, add findings or notes per [references/audit-lookback-best-practices.md](references/audit-lookback-best-practices.md): re-classify per current CCL recommended (controlled ECCNs); re-run license determination recommended (ECCN + destination). Use the reference for severity and wording.
-5. **Build self-audit report** — Fill [templates/Self-Audit Report.md](templates/Self-Audit%20Report.md) completely: document header, scope, findings table, overall risk rating, remediation summary, AI disclosure. Save as `ExChek-SelfAudit-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-report.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full report in chat and instruct the user to save it to their compliance records.
+5. **Build self-audit report** — Fill [templates/Self-Audit Report.md](templates/Self-Audit%20Report.md) completely: document header, scope, findings table, overall risk rating, remediation summary, AI disclosure. Save as `ExChek-SelfAudit-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-report.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full report in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Input (CSV)
@@ -45,7 +45,7 @@ After building findings, fill [templates/Self-Audit Report.md](templates/Self-Au
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-report.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

@@ -34,7 +34,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 4. **Entity List/MEU density** — Use [references/country-risk-best-practices.md](references/country-risk-best-practices.md): characterize density as **Low** / **Medium** / **High** with one line of context. Do not call CSL or run screening; recommend user run screening for specific counterparties if relevant.
 5. **Typical license expectations** — Use **api.exchek.us** `GET /api/ecfr/738` (or eCFR title-15 Part 738 fallback) to determine which Country Chart columns have "X" for the country. Summarize EAR99 vs. controlled, NLR vs. license/exception, and Country Group (B, D:1, E:1, etc.) per the reference.
 6. **High-level red flags** — Apply the checklist in [references/country-risk-best-practices.md](references/country-risk-best-practices.md) (Section 4): embargo/sanctions, list density, diversion/transit, end-use concerns.
-7. **Build one-pager** — Fill [templates/Country Destination Risk One-Pager.md](templates/Country%20Destination%20Risk%20One-Pager.md) completely. Save as `ExChek-CountryRisk-YYYY-MM-DD-CountryName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-one-pager.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full one-pager in chat and instruct the user to save it to their compliance records.
+7. **Build one-pager** — Fill [templates/Country Destination Risk One-Pager.md](templates/Country%20Destination%20Risk%20One-Pager.md) completely. Save as `ExChek-CountryRisk-YYYY-MM-DD-CountryName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-one-pager.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full one-pager in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 8. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Country Destination Risk One-Pager)
@@ -43,7 +43,7 @@ After completing embargo/sanctions, Entity List/MEU density, typical license exp
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-one-pager.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

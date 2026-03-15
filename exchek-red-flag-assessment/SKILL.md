@@ -32,7 +32,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Party/counterparty, transaction context, and facts needed for the checklist. Use [references/end-use-red-flag-guidance.md](references/end-use-red-flag-guidance.md) to drive questions (e.g., "Is the shipping destination different from the buyer's country or billing address?") so the checklist is filled systematically.
 3. **Run checklist** — For each red flag in the reference, set Present? (Yes / No / Conditional) and Notes from user inputs and the guidance.
 4. **Overall assessment** — Decide **No red flags** / **Red flags present** / **Conditional** and escalation recommendation per [references/end-use-red-flag-guidance.md](references/end-use-red-flag-guidance.md).
-5. **Build and save note** — Fill [templates/Red Flag Assessment Note.md](templates/Red%20Flag%20Assessment%20Note.md) completely; save as `ExChek-RedFlagAssessment-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-note.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full note in chat and instruct the user to save it to their compliance records.
+5. **Build and save note** — Fill [templates/Red Flag Assessment Note.md](templates/Red%20Flag%20Assessment%20Note.md) completely; save as `ExChek-RedFlagAssessment-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-note.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full note in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Red Flag Assessment Note)
@@ -41,7 +41,7 @@ After running the checklist and determining overall assessment and escalation re
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-note.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

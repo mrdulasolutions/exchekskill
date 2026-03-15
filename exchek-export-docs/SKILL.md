@@ -25,7 +25,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 2. **Collect inputs** — Shipment: exporter, ultimate consignee, intermediate consignee(s), destination country, shipment value (USD), quantity, item description, Schedule B/HTS if available, transport mode. Classification: ECCN (or EAR99/USML), classification memo ref. Screening: DPS record ref (screening complete). License: license number, license exception (e.g. LVS, GBS), or NLR; optional license determination memo ref. Allow pasted data or references to prior ExChek reports.
 3. **Determine AES** — Apply [references/aes-eei-requirements.md](references/aes-eei-requirements.md): value threshold (e.g. $2,500), destination, controlled item, license/exception. Conclude AES required Yes or No; write short reasoning with citations (15 CFR 758.1, Census 30.7 as applicable).
 4. **Build export documentation package** — Fill [templates/Export Documentation Package.md](templates/Export%20Documentation%20Package.md): Section 1 AES determination, Section 2 invoice export block (include full DCS per 15 CFR 758.6 — see [references/export-docs-best-practices.md](references/export-docs-best-practices.md)), Section 3 packing list annotations, Section 4 SLI, Section 5 AES/EEI data elements, Section 6 AI disclosure. Use "Not provided" or "None" when no data exists. For DCS full text use the exact wording in export-docs-best-practices.md.
-5. **Save and convert** — If you can write files: save as `ExChek-ExportDocs-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-report.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full package in chat and instruct the user to save it to their compliance records.
+5. **Save and convert** — If you can write files: save as `ExChek-ExportDocs-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-report.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full package in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 6. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us or the classification skill's donation reference if available.
 
 ## Report template (Export Documentation Package)
@@ -34,7 +34,7 @@ After building the package, fill [templates/Export Documentation Package.md](tem
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-report.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|

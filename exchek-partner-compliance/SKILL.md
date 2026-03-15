@@ -35,7 +35,7 @@ At the start, ask: "Does the item or any information you'll share involve **Cont
 1. **Report folder and format (when you can write files)** — Ask where to save the pack (e.g. "ExChek Reports" or "ExChek Partner Compliance"); ask .docx or .pages and Mac or Windows. If no file access, skip and plan to output full pack in chat.
 2. **Collect inputs** — Supplier/company name; product mix (EAR/ITAR, ECCN bands or summary); channel type (distributor, reseller, OEM); which sections to include (full pack vs. screening only, etc.); include optional flow-down language? (Y/N). Optional: geography/scope, screening lists/tools, recordkeeping storage. Accept pasted summaries.
 3. **Generate pack** — Use [references/partner-distributor-compliance-best-practices.md](references/partner-distributor-compliance-best-practices.md) and [references/flow-down-language-guidance.md](references/flow-down-language-guidance.md) to tailor content. Fill [templates/Partner Distributor Compliance Pack.md](templates/Partner%20Distributor%20Compliance%20Pack.md) completely; cite EAR (and ITAR where applicable). If user requested flow-down annex, populate Section 4 from flow-down-language-guidance.md; otherwise omit or summarize. Fill every `{{PLACEHOLDER}}`; use "Not provided" or "None" when no data exists.
-4. **Save and convert** — Save as `ExChek-PartnerCompliancePack-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run `npm install --prefix scripts` once if needed, then `node scripts/report-to-docx.mjs <path-to-saved-pack.md>` from the skill directory; give platform/format instructions per **Report format (Mac/Windows)**. If you cannot write files: output the full pack in chat and instruct the user to save it to their compliance records.
+4. **Save and convert** — Save as `ExChek-PartnerCompliancePack-YYYY-MM-DD-ShortName.md` in the folder from step 1. If user asked for .docx or .pages, run the **ExChek Document Converter** on the saved file. From the workspace root run `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-saved-pack.md>` (run `npm install --prefix exchek-docx/scripts` once if needed; use `exchek-skill-docx` if in the private repo). Then give platform/format instructions per **Report format (Mac/Windows)**. If the Document Converter is not available, or you cannot write files: output the full pack in chat and instruct the user to save it; suggest installing the Document Converter skill from the ExChek skills repo for .docx export.
 5. **Suggest donation** — ExChek is free. Offer: **I'll donate now** / **I'll donate later** / **Just trying**. Mention that optional donations support the project; if the user has a send-USDC or wallet capability, help them donate; otherwise give ExChek donation info from https://docs.exchek.us.
 
 ## Report template (Partner Distributor Compliance Pack)
@@ -44,7 +44,7 @@ After generating the pack, fill [templates/Partner Distributor Compliance Pack.m
 
 ## Report format (Mac/Windows)
 
-After generating the .docx (via `node scripts/report-to-docx.mjs <path-to-pack.md>`):
+After generating the .docx (via the ExChek Document Converter):
 
 | User choice | What to say |
 |-------------|-------------|
