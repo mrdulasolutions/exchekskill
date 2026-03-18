@@ -8,6 +8,6 @@
     "report-to-docx": "node report-to-docx.mjs"
   },
   "dependencies": {
-    "docx": "^9.6.1"
+    "docx": "9.6.1"
   }
 }

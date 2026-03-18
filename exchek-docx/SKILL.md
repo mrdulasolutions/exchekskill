@@ -38,7 +38,8 @@ When the user wants a .docx, client-ready, or professional report, follow these 
 1. **Input** — You have a path to a markdown report: either the user's existing .md file, or a **temporary** .md that another ExChek skill wrote (in that case, the calling skill will rename the output .docx and delete the temp .md; the user receives only the .docx).
 2. **Run the converter** — From the **workspace root** (or the directory where ExChek skills are installed), run:
    - `npm install --prefix exchek-docx/scripts` once if needed (or `exchek-skill-docx/scripts` in the private repo).
-   - `node exchek-docx/scripts/report-to-docx.mjs <full-path-to-report.md>`
+   - `node exchek-docx/scripts/report-to-docx.mjs "<full-path-to-report.md>"`
+   - **Security:** sanitize/reject any user-provided path containing shell metacharacters (e.g. `;`, `|`, `&`, `$`, backticks, or newlines) and always pass the full path as a single quoted argument.
    Use the actual path to the Document Converter skill folder if different (e.g. `exchek-skill-docx` in the private repo).
 3. **Output** — The script writes a `.docx` file next to the `.md` (same directory, same base name). Print the path and give the user platform/format instructions below.
 
