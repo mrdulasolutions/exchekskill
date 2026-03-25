@@ -1,0 +1,14 @@
+# ExChek Compliance Report Card manifest
+# Used by agents and tools for discovery; SKILL.md holds full instructions.
+
+name: exchek-compliance-report
+description: Generate a CARFAX-style Export Compliance Report Card that an exporter can send to their customer. Aggregates classification, screening, license determination, country risk, and red-flag results into a single customer-facing trust document with a clear compliance status (PASS / CONDITIONAL / HOLD). Free to use; optional donation.
+compatibility:
+  - Claude Code
+  - Claude desktop
+  - Claude CoWork
+  - Claude web
+
+# Optional metadata
+version: "1"
+main: SKILL.md
